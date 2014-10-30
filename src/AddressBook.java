@@ -1,5 +1,3 @@
-import com.sun.xml.internal.ws.api.addressing.AddressingVersion;
-
 /**
  * Created by student on 23.10.2014.
  */
@@ -11,14 +9,61 @@ public class AddressBook {
         return book.count;
     }
 
+    public static Address getAddres(int i, AddressBook book) {
+        return book.list[i];
+    }
+
     public static void addNew(AddressBook book, Address newAddress) {
         book.list[book.count] = newAddress;
         book.count++;
     }
-    public static void printBook(AddressBook book){
-        for(int i=0; i<book.count; i++){
+
+    public static void printBook(AddressBook book) {
+        for (int i = 0; i < book.count; i++) {
             Address a = book.list[i];
-            System.out.println(a.name + " " + a.telephone + " " + a.mail);
+            print(i, a);
         }
+    }
+
+    public static int find(AddressBook book, String search) {
+        for (int i = 0; i < book.count; i++) {
+            Address a = book.list[i];
+            if (search.equals(a.name)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+/*
+    public static int[] find(AddressBook book, String search) {
+        int found = 0;
+        for (int i = 0; i < book.count; i++) {
+            Address a = book.list[i];
+            if (search.contains(a.name)) {
+                found++;
+            }
+        }
+
+        for (int i = 0; i < book.count; i++) {
+            Address a = book.list[i];
+            if (search.contains(a.name)) {
+            }
+        }
+        return -1;
+    }
+ */
+
+    public static void print(int i, Address address) {
+        System.out.println(i + " " + address.name + " " + address.telephone + " " + address.mail);
+
+    }
+
+    public static void delete(int delIndex, AddressBook book) {
+        for (int i = delIndex; i < book.count - 1; i++) {
+            book.list[i] = book.list[i + 1];
+        }
+        book.count--;
+
+
     }
 }
