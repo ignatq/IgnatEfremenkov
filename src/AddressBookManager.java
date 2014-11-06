@@ -1,14 +1,34 @@
 import com.sun.org.apache.xpath.internal.SourceTree;
 
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
  * Created by student on 23.10.2014.
  */
 public class AddressBookManager {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         AddressBook book1 = new AddressBook();
+        /*Запись в фаил и чтение из фаила
+        Path path = Paths.get("C:\\Users\\TEMP.TISSU.001\\file.txt");
+        ArrayList<String> strings = new ArrayList<String>();
+        strings.add("Jopa");
+        strings.add("Ignat");
+        strings.add("Petya");
+        Charset cs = Charset.forName("UTF-8");
+        Files.write(path,strings, cs);
+        List<String> lines = Files.readAllLines(path, cs);
+        for (int i=0; i<lines.size(); i++) {
+            System.out.println((lines.get(i)));
+        }
+        */
 //        int count = AddressBook.getCount(book1);
 //
 //        Address a1 = new Address();
