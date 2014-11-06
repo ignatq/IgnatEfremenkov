@@ -46,13 +46,16 @@ public class AddressBookManager {
                 case 2:
                     System.out.println("Введите имя для поиска");
                     String sname = scanner.next();
-                    int index = AddressBook.find(book1, sname);
-                    if (index == -1 ){
+                    int[] index = AddressBook.find(book1, sname);
+
+                    if (index.length == 0 ){
                         System.out.println("Запись не найдена");
                     }
-                    else{
-                        Address found = AddressBook.getAddres(index, book1);
-                        AddressBook.print(index, found);
+                    else {
+                        for (int i = 0; i < index.length; i++) {
+                            Address found =AddressBook.getAddres(index[i], book1);
+                            AddressBook.print(index[i], found);
+                        }
                     }
                     break;
                 case 3:AddressBook.printBook(book1);
@@ -63,6 +66,30 @@ public class AddressBookManager {
                     AddressBook.delete(delind, book1);
                     break;
                 case 5:
+                    System.out.println("Введите номер запси для изменения");
+                    int updateInd = scanner.nextInt();
+                    Address update  = AddressBook.getAddres(updateInd, book1);
+                    AddressBook.print(updateInd,update);
+                    System.out.println("Введите номер поля которое хотите изменить(1-3)");
+                    int nomerPolya = scanner.nextInt();
+                    if (nomerPolya == 1){
+                        System.out.println("Введите новое имя");
+                        String newName = scanner.next();
+                        update.name = newName;
+                    }
+                    else if (nomerPolya == 2){
+                        System.out.println("Введите новый номер телефона");
+                        String newPhone = scanner.next();
+                        update.telephone = newPhone;
+                    }
+                    else if (nomerPolya == 3){
+                        System.out.println("Введите новый номер телефона");
+                        String newMail = scanner.next();
+                        update.mail = newMail;
+                    }
+                    else {
+                        System.out.println("Неверный номер поля");
+                    }
                     break;
                 case 6:
                     return;

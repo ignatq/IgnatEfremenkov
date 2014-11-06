@@ -25,8 +25,9 @@ public class AddressBook {
         }
     }
 
+    /*
     public static int find(AddressBook book, String search) {
-        for (int i = 0; i < book.count; i++) {
+             for (int i = 0; i < book.count; i++) {
             Address a = book.list[i];
             if (search.equals(a.name)) {
                 return i;
@@ -34,24 +35,29 @@ public class AddressBook {
         }
         return -1;
     }
-/*
+    */
+
+
     public static int[] find(AddressBook book, String search) {
         int found = 0;
+        int k =0;
         for (int i = 0; i < book.count; i++) {
             Address a = book.list[i];
-            if (search.contains(a.name)) {
+            if (a.name.contains(search)) {
                 found++;
             }
         }
-
+        int[] searchmass = new int[found];
         for (int i = 0; i < book.count; i++) {
             Address a = book.list[i];
-            if (search.contains(a.name)) {
+            if (a.name.contains(search)) {
+                searchmass[k]= i;
+                k++;
             }
         }
-        return -1;
+        return searchmass;
     }
- */
+
 
     public static void print(int i, Address address) {
         System.out.println(i + " " + address.name + " " + address.telephone + " " + address.mail);
